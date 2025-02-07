@@ -7,7 +7,7 @@ HINSTANCE hInst;
 WCHAR szTitle[MAX_LOADSTRING];                
 WCHAR szWindowClass[MAX_LOADSTRING];            
 
-// Forward declarations of functions included in this code module:
+
 ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
@@ -35,7 +35,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     MSG msg; 
 
-    while (GetMessage(&msg, nullptr, 0, 0)) //Запуск цикла обработки сообщений для этого окна (while(GetMessage))
+    while (GetMessage(&msg, nullptr, 0, 0)) //Start a message loop for this window (while(GetMessage))
     {
         if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
         {
@@ -50,7 +50,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 
 
-ATOM MyRegisterClass(HINSTANCE hInstance) //Создание объекта окна (WNDCLASS)
+ATOM MyRegisterClass(HINSTANCE hInstance) //Creating a Window Object (WNDCLASS)
 {
     WNDCLASSEXW wcex;
 
@@ -68,7 +68,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance) //Создание объекта окна (WNDCLASS)
     wcex.lpszClassName  = szWindowClass;
     wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
-    return RegisterClassExW(&wcex); //Регистрация окна в ОС функция (RegisterClass)
+    return RegisterClassExW(&wcex); //Registering a window in the OS function (RegisterClass)
 }
 
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
@@ -76,14 +76,14 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    hInst = hInstance; 
 
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr); //Формирование окна, получаем дескриптор (CreateWindowEx)
+      CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr); //Forming a window, getting a descriptor (CreateWindowEx)
 
    if (!hWnd)
    {
       return FALSE;
    }
 
-   ShowWindow(hWnd, nCmdShow); //Выводим окно (ShowWindow)
+   ShowWindow(hWnd, nCmdShow); //Displaying the window (ShowWindow)
    UpdateWindow(hWnd);
 
    return TRUE;
